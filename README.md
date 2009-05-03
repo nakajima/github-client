@@ -8,14 +8,12 @@ Another GitHub API client (for version 2).
     session.users['nakajima']
     session.repositories['nakajima/fixjour']
     
-    user = session.users['nakajima'].repositories['fixjour']
-    user.repositories['fixjour]
+    user = session.users['nakajima']
+    user.repositories['fixjour']
+    user.repositories.each { |repo| p repo }
     user.followers.each { |follower| p follower }
+    user.following.each { |followee| p followee }
     
-    repo = user.repositories['fixjour']
-
-
-
 (c) Copyright 2009 Pat Nakajima
 
 Permission is hereby granted, free of charge, to any person
