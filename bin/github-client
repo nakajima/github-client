@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+$LOAD_PATH.unshift File.join(File.dirname(__FILE__), *%w[.. lib])
+require File.join(File.dirname(__FILE__), *%w[.. lib github-client])
+$LOAD_PATH.shift
+
+# EXAMPLE:
+#
+#  $ github-client user defunkt nakajima:YOUR-TOKEN
+klass = GitHubClient.const_get(ARGV[0].to_s.capitalize).plural
+option = ARGV[1]
+credentials = ARGV[2] ? ARGV[2].to_s.split(':') : [nil,nil]
+session = GitHubClient::Session.new(*credentials)
+pp session.send(klass)[option]
